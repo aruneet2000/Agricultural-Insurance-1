@@ -6,9 +6,9 @@
 	<div class="navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="/">Home</a></li>
-			<li><a href="/admin-login">Admin</a></li>
-			<li><a href="/farmer-login">Farmer</a></li>
-			<li  class="active"><a href="/officer-login">Claim Officer</a></li>
+			<li class="active"><a href="#">Dashboard</a></li>
+			<li><a href="/due-claims">Claims to be Processed</a></li>
+			<li class="log-out"><a href="/">Log Out</a></li>
 		</ul>
 	</div>
 </nav>
@@ -30,6 +30,9 @@
 <li>Zip Code : ${claimOfficer.zipCode}</li>
 <li>Officer Id : ${claimOfficer.officerId}</li>
 <li>Password : ${claimOfficer.password}</li>
+<li>Approved : ${claimOfficer.approved}</li>
 </ul>
 </div>
+
+<br><br><br><br>
 <%@ include file="../common/footer.jspf"%>

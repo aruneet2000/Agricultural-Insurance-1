@@ -53,6 +53,9 @@ public class ClaimOfficer {
     
     @Column(name="password", nullable = false, length = 15)
     private String password;
+    
+    @Column(name="approved")
+    private boolean approved;
 
 	public Long getId() {
 		return id;
@@ -172,6 +175,14 @@ public class ClaimOfficer {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
     
 }

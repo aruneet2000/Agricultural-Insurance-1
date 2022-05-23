@@ -1,5 +1,16 @@
+.navbar-nav{
+	height:52px;
+}
+.log-out{
+	margin-left:71rem;
+}
+li:hover{
+	background-color:#e7e7e7;
+	border:1px solid white;
+}
 
-footer{
-	position:relative;
-	margin-top:19%;
+.error-btn{
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }

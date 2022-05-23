@@ -31,4 +31,7 @@
 		to Create a new account
 	</div>
 </div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br>
 <%@ include file="../common/footer.jspf"%>

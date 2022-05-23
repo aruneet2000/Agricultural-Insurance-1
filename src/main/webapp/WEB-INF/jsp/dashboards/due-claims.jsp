@@ -6,16 +6,15 @@
 	<div class="navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="/">Home</a></li>
-			<li class="active"><a href="/admin-login">Admin</a></li>
-			<li><a href="/farmer-login">Farmer</a></li>
-			<li><a href="/officer-login">Claim Officer</a></li>
+			<li><a href="/officer-dashboard">Dashboard</a></li>
+			<li class="active"><a href="#">Claims to be Processed</a></li>
+			<li class="log-out"><a href="/">Log Out</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="container">
-	<h1 class="text-center">Welcome ${admin.userId}</h1>
-
-	<table class="table table-striped">
+<h1 class="text-center">Welcome ${claimOfficer.firstName} ${claimOfficer.lastName}</h1>
+<table class="table table-striped">
 		<caption>Approval Requests are</caption>
 		<thead>
 			<tr>
@@ -39,10 +38,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<h1 class="text-center">${emptyList}</h1>
 </div>
+
 <br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br>
 <%@ include file="../common/footer.jspf"%>

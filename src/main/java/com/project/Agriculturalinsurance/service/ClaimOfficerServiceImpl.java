@@ -43,4 +43,38 @@ public class ClaimOfficerServiceImpl implements ClaimOfficerService{
 		return false;
 	}
 
+	@Override
+	public List<ClaimOfficer> getUnApprovedOfficer() {
+		List<ClaimOfficer> unApprovedOfficer = new ArrayList<ClaimOfficer>();
+		
+		for(ClaimOfficer claimOfficer : claimOfficerList) {
+			if(!claimOfficer.isApproved()) {
+				unApprovedOfficer.add(claimOfficer);
+			}
+		}
+		
+		return unApprovedOfficer;
+	}
+
+	@Override
+	public void rejectOfficer(int id) {
+		for(ClaimOfficer claimOfficer : claimOfficerList) {
+			if(claimOfficer.getId()==id) {
+				claimOfficerRepository.delete(claimOfficer);
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void approveOfficer(int id) {
+		for(ClaimOfficer claimOfficer : claimOfficerList) {
+			if(claimOfficer.getId()==id) {
+				claimOfficer.setApproved(true);
+				claimOfficerRepository.save(claimOfficer);
+				break;
+			}
+		}
+	}
+
 }

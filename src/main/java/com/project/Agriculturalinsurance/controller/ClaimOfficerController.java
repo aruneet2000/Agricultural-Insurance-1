@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.project.Agriculturalinsurance.model.ClaimOfficer;
 import com.project.Agriculturalinsurance.repository.ClaimOfficerRepository;
@@ -19,6 +20,7 @@ import com.project.Agriculturalinsurance.service.ClaimOfficerService;
 
 
 @Controller
+@SessionAttributes("claimOfficer")
 public class ClaimOfficerController {
 	
 	@Autowired
@@ -70,4 +72,23 @@ public class ClaimOfficerController {
 		
 		return "dashboards/officer-dashboard";
 	}
+	
+	@RequestMapping(value = "/officer-dashboard", method = RequestMethod.GET)
+	public String redirectToDashboardPage(ModelMap model) {
+		
+		return "dashboards/officer-dashboard";
+	}
+	
+	
+	@RequestMapping(value = "/due-claims", method = RequestMethod.GET)
+	public String showDueClaimsPage() {
+		
+		return "dashboards/due-claims";
+	}
+	
+	@RequestMapping(value = "/log-out", method = RequestMethod.GET)
+	public String logOutOfficer() {
+		return "";
+	}
+	
 }
