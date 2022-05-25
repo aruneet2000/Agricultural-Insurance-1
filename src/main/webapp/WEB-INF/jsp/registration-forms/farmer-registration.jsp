@@ -12,16 +12,17 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="/admin-login">Admin</a></li>
-				<li class="nav-item"><a class="nav-link" href="/farmer-login">Farmer</a></li>
 				<li class="nav-item"><a class="nav-link active"
-					href="/officer-login">Claim Officer</a></li>
+					href="/farmer-login">Farmer</a></li>
+				<li class="nav-item"><a class="nav-link" href="/officer-login">Claim
+						Officer</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
-<h1 class="text-center">Register as Claim Officer</h1>
+<h1 class="text-center">Register as Farmer</h1>
 <div class="container">
-	<form:form method="post" modelAttribute="claimOfficer">
+	<form:form method="post" modelAttribute="farmer">
 		<fieldset class="form-group">
 			<form:label path="firstName">First Name</form:label>
 			<form:input class="form-control" type="text" path="firstName"
@@ -37,7 +38,7 @@
 		<fieldset class="form-group">
 			<form:label path="dOB">Date of Birth</form:label>
 			<form:input path="dOB" type="text" class="form-control"
-				placeholder="Your Date of Birth" required="true" />
+				placeholder="Your Date of Birth" required="required" />
 			<form:errors path="dOB" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
@@ -55,18 +56,6 @@
 			<form:input class="form-control" type="text" path="contact"
 				placeholder="Your Contact Number" required="true" />
 			<form:errors path="contact" cssClass="text-warning" />
-		</fieldset>
-		<fieldset class="form-group">
-			<form:label path="bankName">Bank Name</form:label>
-			<form:input class="form-control" type="text" path="bankName"
-				placeholder="Enter Bank Name" required="true" />
-			<form:errors path="bankName" cssClass="text-warning" />
-		</fieldset>
-		<fieldset class="form-group">
-			<form:label path="bankBranch">Bank Branch</form:label>
-			<form:input class="form-control" type="text" path="bankBranch"
-				placeholder="Enter Bank's Branch Name" required="true" />
-			<form:errors path="bankBranch" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="addLine1">Address Line 1</form:label>
@@ -98,10 +87,10 @@
 			<form:errors path="zipCode" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
-			<form:label path="officerId">Claim Officer ID</form:label>
-			<form:input class="form-control" type="text" path="officerId"
+			<form:label path="farmerId">Farmer ID</form:label>
+			<form:input class="form-control" type="text" path="farmerId"
 				placeholder="Create Your ID" required="true" />
-			<form:errors path="officerId" cssClass="text-warning" />
+			<form:errors path="farmerId" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="password">Password</form:label>
@@ -112,12 +101,9 @@
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form:form>
 	<div>
-		Already have an account? <a href="/officer-login">Click here</a> to
+		Already have an account? <a href="/farmer-login">Click here</a> to
 		Login
 	</div>
 </div>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 <%@ include file="../common/footer.jspf"%>

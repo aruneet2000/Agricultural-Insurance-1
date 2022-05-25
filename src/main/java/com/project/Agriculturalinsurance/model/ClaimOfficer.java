@@ -1,6 +1,10 @@
 package com.project.Agriculturalinsurance.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -10,48 +14,62 @@ public class ClaimOfficer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name = "first_name", nullable = false, length = 20)
-	@Size(min=5, message="Enter at least 5 Characters...")
+	@Column(name = "first_name", nullable = false)
+	@Size(min=1, message="Enter at least 5 Characters...")
     private String firstName;
      
-    @Column(name = "last_name", nullable = false, length = 20)
-    @Size(min=5, message="Enter at least 5 Characters...")
+    @Column(name = "last_name", nullable = false)
+    @Size(min=1, message="Enter at least 5 Characters...")
     private String lastName;
     
-    @Column(name = "dob", nullable = false, length = 20)
-    private String dOB;
+    @Column(name = "dob", nullable = false)
+    @Past(message="Date of Birth can not be a future date")
+//    @Size(min=1, message="Plesae Enter Your Date of Birth")
+    private Date dOB;
     
-    @Column(name = "gender", nullable = false, length = 6)
+    @Column(name = "gender", nullable = false)
+    @Size(min=1, message="Please select a gender type")
     private String gender;
     
     @Column(name = "contact", nullable = false, unique = true, length = 10)
-    private long contact;
+    @Size(min=10, message="Enter a Valid Phone Number")
+    @Size(max=10, message="Enter a Valid Phone Number")
+    private String contact;
     
-    @Column(name = "bank_name", nullable = false, length = 20)
+    @Column(name = "bank_name", nullable = false)
+    @Size(min=1, message="Bank Name can not be NULL")
     private String bankName;
     
-    @Column(name = "bank_branch", nullable = false, length = 20)
+    @Column(name = "bank_branch", nullable = false)
+    @Size(min=1, message="Branch Name can not be NULL")
     private String bankBranch;
     
-    @Column(name = "add_line1", nullable = false, length = 50)
+    @Column(name = "add_line1", nullable = false)
+    @Size(min=1, message="Mention your address")
     private String addLine1;
     
-    @Column(name = "add_line2", nullable = false, length = 50)
+    @Column(name = "add_line2")
     private String addLine2;
     
-    @Column(name = "city", nullable = false, length = 20)
+    @Column(name = "city", nullable = false)
+    @Size(min=1, message="City can not be NULL")
     private String city;
     
-    @Column(name = "state", nullable = false, length = 20)
+    @Column(name = "state", nullable = false)
+    @Size(min=1, message="State can not be NULL")
     private String state;
     
     @Column(name = "zip", nullable = false, length = 6)
-    private long zipCode;
+    @Size(min=6, message="Enter a Valid Zip/Postal Code")
+    @Size(max=6, message="Enter a Valid Zip/Postal Code")
+    private String zipCode;
     
-    @Column(name = "officer_id", nullable = false, length = 10)
+    @Column(name = "officer_id", nullable = false)
+    @Size(min=1, message="Create an Officer ID")
     private String officerId;
     
-    @Column(name="password", nullable = false, length = 15)
+    @Column(name="password", nullable = false)
+    @Size(min=1, message="Create a Password")
     private String password;
     
     @Column(name="approved")
@@ -81,11 +99,11 @@ public class ClaimOfficer {
 		this.lastName = lastName;
 	}
 
-	public String getdOB() {
+	public Date getdOB() {
 		return dOB;
 	}
 
-	public void setdOB(String dOB) {
+	public void setdOB(Date dOB) {
 		this.dOB = dOB;
 	}
 
@@ -97,11 +115,11 @@ public class ClaimOfficer {
 		this.gender = gender;
 	}
 
-	public long getContact() {
+	public String getContact() {
 		return contact;
 	}
 
-	public void setContact(long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
@@ -153,11 +171,11 @@ public class ClaimOfficer {
 		this.state = state;
 	}
 
-	public long getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(long zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 

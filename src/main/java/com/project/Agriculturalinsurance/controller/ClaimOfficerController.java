@@ -1,22 +1,25 @@
 package com.project.Agriculturalinsurance.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import com.project.Agriculturalinsurance.model.ClaimOfficer;
+import com.project.Agriculturalinsurance.model.Farmer;
 import com.project.Agriculturalinsurance.repository.ClaimOfficerRepository;
 import com.project.Agriculturalinsurance.service.ClaimOfficerService;
+import com.project.Agriculturalinsurance.service.FarmerService;
 
 
 @Controller
@@ -29,6 +32,17 @@ public class ClaimOfficerController {
 	@Autowired
 	private ClaimOfficerRepository claimOfficerRepository;
 	
+	@Autowired
+	private FarmerService farmerService;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		// Date - dd/MM/yyyy
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, false));
+	}
+	
 	@RequestMapping(value = "/officer-registration" , method = RequestMethod.GET)
     public String showOfficerRegistrationPage(Model model) {
         model.addAttribute("claimOfficer", new ClaimOfficer());
@@ -37,11 +51,11 @@ public class ClaimOfficerController {
     }
 
 	@RequestMapping(value = "/officer-registration" , method = RequestMethod.POST)
-	public String saveOfficerDetails(ModelMap model,ClaimOfficer claimOfficer, BindingResult result) {
+	public String saveOfficerDetails(ModelMap model, @Valid ClaimOfficer claimOfficer, BindingResult result) {
 
-//		if (result.hasErrors()) {
-//			return "registration-forms/officer-registration";
-//		}
+		if (result.hasErrors()) {
+			return "registration-forms/officer-registration";
+		}
 		
 		claimOfficerRepository.save(claimOfficer);
 		
@@ -79,16 +93,11 @@ public class ClaimOfficerController {
 		return "dashboards/officer-dashboard";
 	}
 	
-	
-	@RequestMapping(value = "/due-claims", method = RequestMethod.GET)
-	public String showDueClaimsPage() {
-		
-		return "dashboards/due-claims";
-	}
-	
-	@RequestMapping(value = "/log-out", method = RequestMethod.GET)
-	public String logOutOfficer() {
-		return "";
+	@RequestMapping(value = "/farmer", method = RequestMethod.GET)
+	public String redirectToDashboardPage(ModelMap model, @RequestParam  String farmerId) {
+		Farmer farmer = farmerService.getFarmerById(farmerId);
+		model.put("farmer", farmer);
+		return "pages/farmer";
 	}
 	
 }

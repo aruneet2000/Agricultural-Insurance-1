@@ -1,4 +1,4 @@
-.navbar-nav{
+/* .navbar-nav{
 	height:52px;
 }
 .log-out{
@@ -7,6 +7,17 @@
 li:hover{
 	background-color:#e7e7e7;
 	border:1px solid white;
+} */
+
+fieldset{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+label{
+	margin-bottom:10px;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .error-btn{

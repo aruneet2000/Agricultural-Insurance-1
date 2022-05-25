@@ -1,48 +1,50 @@
 <%@ include file="../common/header.jspf"%>
-<nav role="navigation" class="navbar navbar-default">
-	<div class="">
-		<a href="#" class="navbar-brand">Insurance</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li><a href="/">Home</a></li>
-			<li class="active"><a href="/admin-login">Admin</a></li>
-			<li><a href="/farmer-login">Farmer</a></li>
-			<li><a href="/officer-login">Claim Officer</a></li>
-		</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Admin</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/pending-requests">Pending Requests</a></li>
+
+			</ul>
+			<form class="d-flex">
+				<input class="form-control me-2" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+				&nbsp;&nbsp; <a class="btn btn-outline-success" href="/log-out">LogOut</a>
+			</form>
+		</div>
 	</div>
 </nav>
 <div class="container">
 	<h1 class="text-center">Welcome ${admin.userId}</h1>
 
-	<table class="table table-striped">
-		<caption>Approval Requests are</caption>
-		<thead>
-			<tr>
-				<td>Officer ID</td>
-				<td>First Name</td>
-				<td>Last Name</td>
-				<td>Action</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${unApprovedOfficer}" var="officer">
-				<tr>
-					<td>${officer.officerId}</td>
-					<td>${officer.firstName}</td>
-					<td>${officer.lastName}</td>
-					<td><a href="/approve-officer?id=${officer.id}" type="button"
-						class="btn btn-success">Approve</a></td>
-					<td><a href="/reject-officer?id=${officer.id}" type="button"
-						class="btn btn-warning">Reject</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<h1 class="text-center">${emptyList}</h1>
+	
 </div>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <%@ include file="../common/footer.jspf"%>

@@ -12,8 +12,8 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link"
 					href="/officer-dashboard">Dashboard</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Claims
-						to be Processed</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">Farmer
+						Details</a></li>
 
 			</ul>
 			<form class="d-flex">
@@ -29,33 +29,43 @@
 	<h1 class="text-center">Welcome ${claimOfficer.firstName}
 		${claimOfficer.lastName}</h1>
 	<table class="table caption-top table-striped">
-		<caption>Approval Requests for Claims are</caption>
+		<caption>The particular Farmer Details are</caption>
 		<thead>
 			<tr>
-				<td>Farmer ID</td>
-				<td>Claim ID</td>
-				<td>Claim Type</td>
-				<td>Claim Amount</td>
-				<td>Action</td>
+				<td>Fields</td>
+				<td>Values</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${dueClaimRequests}" var="claim">
-				<tr>
-					<td><a href="/farmer?farmerId=${claim.farmerId}">${claim.farmerId}</a></td>
-					<td>${claim.claimId}</td>
-					<td>${claim.claimType}</td>
-					<td>${claim.claimAmount}</td>
-					<td><a href="/approve-claim?claimId=${claim.claimId}" type="button"
-						class="btn btn-success">Approve</a></td>
-					<td><a href="/reject-claim?claimId=${claim.claimId}" type="button"
-						class="btn btn-warning">Reject</a></td>
-				</tr>
-			</c:forEach>
+			<tr>
+				<td>Farmer Name</td>
+				<td>${farmer.firstName} ${farmer.lastName}</td>
+			</tr>
+			<tr>
+				<td>Date of Birth</td>
+				<td><fmt:formatDate pattern="dd/MM/yyyy" value="${farmer.dOB}" /></td>
+			</tr>
+			<tr>
+				<td>Farmer Gender</td>
+				<td>${farmer.gender}</td>
+			</tr>
+			<tr>
+				<td>Farmer Contact</td>
+				<td>${farmer.contact}</td>
+			</tr>
+			<tr>
+				<td>Farmer Address</td>
+				<td>${farmer.addLine1},${farmer.city},${farmer.state},${farmer.zipCode}</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

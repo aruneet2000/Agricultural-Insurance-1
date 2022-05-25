@@ -46,7 +46,7 @@ public class ClaimOfficerServiceImpl implements ClaimOfficerService{
 	@Override
 	public List<ClaimOfficer> getUnApprovedOfficer() {
 		List<ClaimOfficer> unApprovedOfficer = new ArrayList<ClaimOfficer>();
-		
+		getAllOfficers();
 		for(ClaimOfficer claimOfficer : claimOfficerList) {
 			if(!claimOfficer.isApproved()) {
 				unApprovedOfficer.add(claimOfficer);
